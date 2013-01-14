@@ -1,0 +1,28 @@
+User
+
+email required unique
+password required
+first_name required
+last_name required
+username unique
+date_signed_up required
+date_last_login
+date_last_activity
+password_reset_code 
+
+UserEmails
+
+email required unique
+user_id required
+date_added required
+verification required (ex: verified:1 or code:sdfsEsfsdCSEs)
+
+UserApps
+
+user_id
+app_id
+status
+
+App
+
+app_name
