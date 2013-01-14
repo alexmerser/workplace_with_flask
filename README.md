@@ -1,4 +1,4 @@
 workplace
 =========
 
-Workplace SaaS Suite
+Workplace SaaS Suite is live on workplace.is
