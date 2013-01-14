@@ -24,7 +24,7 @@ User People Lists:
 	•	Add Users to List
 	•	Remove Users from List
 
-
+--------------------------------------------------------
 News Functions:
 
 User:
@@ -38,7 +38,7 @@ App:
 	•	Change News Privacy
 	•	Filter News
 
-
+--------------------------------------------------------
 Archive Functions:
 
 	•	Add to Archive
