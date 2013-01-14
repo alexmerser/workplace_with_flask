@@ -1,0 +1,50 @@
+Workplace Functions:
+
+User Account:
+	•	Sign Up
+	•	Login
+	•	Reset Password
+	•	Change Password
+	•	Pick Username
+	•	Verify Email Address
+	•	Change Email Address
+	•	Add Email Addresses
+	•	Set Primary Email Address
+	•	Suspend Account
+	•	Delete Account
+
+User Apps:
+	•	Add App
+	•	Suspend App
+	•	Remove App
+
+User People Lists:
+	•	Create List
+	•	Delete List
+	•	Add Users to List
+	•	Remove Users from List
+
+
+News Functions:
+
+User:
+	•	Add News
+	•	Delete News
+	•	Change News Privacy
+
+App:
+	•	Get News from News App
+	•	Get New from other apps
+	•	Change News Privacy
+	•	Filter News
+
+
+Archive Functions:
+
+	•	Add to Archive
+	•	Archive
+	•	Unarchive
+	•	Filter Archive
+	•	Edit Archived Item Profiles
+	•	Chance Archived Item Privacy
+
