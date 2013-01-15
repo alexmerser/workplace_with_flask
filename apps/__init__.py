@@ -13,6 +13,12 @@ toolbar = DebugToolbarExtension(app)
 #SQLAlchemy
 db = SQLAlchemy(app)
 
+#Login
+from flask.ext.login import LoginManager
+login_manager = LoginManager()
+login_manager.setup_app(app)
+
+
 import apps.archive
 import apps.news
 import apps.todolist
