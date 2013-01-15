@@ -15,13 +15,11 @@ class User(db.Model):
 
     @classmethod
     def can_signin(cls, email, password):
-        users = User.query.filter_by(email=email, password=password)
+        users = cls.query.filter_by(email=email, password=password)
         if users:
             return True
         else:
             return False
-        
-
         
     
     def __init__(self, email, password, first_name, last_name, username):
