@@ -5,7 +5,7 @@
   <h1>workplace</h1>
   <div class=metanav>
   {% if not session.logged_in %}
-    <a href="{{ url_for('signin') }}">sign in</a>
+    <a href="{{ url_for('login') }}">log in</a>
   {% else %}
     <a href="{{ url_for('signout') }}">sign out</a>
   {% endif %}
