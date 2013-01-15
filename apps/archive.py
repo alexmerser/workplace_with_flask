@@ -5,4 +5,4 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 
 @app.route('/')
 def hello():
-    return render_template("hello.html")
+    return redirect("/login")
