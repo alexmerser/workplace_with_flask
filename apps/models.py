@@ -14,7 +14,7 @@ class User(db.Model):
     password_reset_code = db.Column(db.String(100), nullable=True)
 
     @classmethod
-    def can_signin(cls, email, password):
+    def login(cls, email, password):
         users = cls.query.filter_by(email=email, password=password)
         if users:
             return True
