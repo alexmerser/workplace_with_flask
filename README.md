@@ -19,3 +19,4 @@ Architecture simply shows how different apps use API within Workplace to speak t
 4. *python runserver.py*
 5. open browser to *http://127.0.0.1:5000*
 
+# Deployment
