@@ -1,5 +1,23 @@
-<form action="." method="post">
+<form action="{{ url_for('login') }}" method="post">
     {{ form.hidden_tag() }}
-    {{ form.email.label }} {{ form.email(size=20) }}
-    <input type="submit" value="Go">
+    <ul>
+        <li>
+            <label for="email">{{ form.email.label }}</label> {{ form.email(size=20) }}
+        </li>
+        <li>
+            <label for="password">{{ form.password.label }}</label> {{ form.password(size=20) }}
+        </li>
+        <li>
+            <label for="password2">{{ form.password2.label }}</label> {{ form.password2(size=20) }}
+        </li>
+        <li>
+            <label for="first_name">{{ form.first_name.label }}</label> {{ form.first_name(size=20) }}
+        </li>
+        <li>
+            <label for="last_name">{{ form.last_name.label }}</label> {{ form.last_name(size=20) }}
+        </li>
+        <li>
+            <label for="username">{{ form.username.label }}</label> {{ form.username(size=20) }}
+        </li>
+    <input type="submit" value="Submit">
 </form>

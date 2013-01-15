@@ -30,7 +30,7 @@ class UserEmail(db.Model):
     date_added = db.Column(db.Date, nullable=False)
     verification = db.Column(db.String(200), nullable=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User', backref=db.backref('users', lazy='dynamic'))
+    user = db.relationship('User', backref=db.backref('email_users', lazy='dynamic'))
 
     def __init__(self, email, user, date_added=None):
         self.email = email
@@ -56,7 +56,7 @@ class UserApp(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship('User', backref=db.backref('users', lazy='dynamic'))
+    user = db.relationship('User', backref=db.backref('app_users', lazy='dynamic'))
     app_id = db.Column(db.Integer, db.ForeignKey('app.id'))
     app = db.relationship('App', backref=db.backref('apps', lazy='dynamic'))
     
