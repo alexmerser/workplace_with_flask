@@ -16,7 +16,7 @@ class SignupForm(Form):
     last_name = TextField("Last Name", validators = [Required()])
     username = TextField("User Name", validators = [Required()])
 
-class SigninForm(Form):
+class LoginForm(Form):
     email = TextField("Email", validators = [Required()])
     password = PasswordField("password", validators = [Required()])
 
@@ -31,7 +31,7 @@ def signup():
         return redirect("/")
     return render_template("signup.html", form=form)
     
-@app.route("/signin", methods=("GET", "POST"))
+@app.route("/login", methods=("GET", "POST"))
 def login():
     form = LoginForm()
     if form.validate_on_submit():
