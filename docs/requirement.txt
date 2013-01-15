@@ -1,0 +1,12 @@
+Flask==0.9
+Flask-Admin==1.0.4
+Flask-DebugToolbar==0.7.1
+Flask-Login==0.1.3
+Flask-SQLAlchemy==0.16
+Flask-WTF==0.8.2
+Jinja2==2.6
+SQLAlchemy==0.8.0b2
+WTForms==1.0.2
+Werkzeug==0.8.3
+blinker==1.2
+wsgiref==0.1.2
