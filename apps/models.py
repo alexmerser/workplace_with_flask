@@ -12,6 +12,17 @@ class User(db.Model):
     date_last_login = db.Column(db.Date, nullable=True)
     date_last_activity = db.Column(db.Date, nullable=True)
     password_reset_code = db.Column(db.String(100), nullable=True)
+
+    @classmethod
+    def can_signin(cls, email, password):
+        users = User.query.filter_by(email=email, password=password)
+        if users:
+            return True
+        else:
+            return False
+        
+
+        
     
     def __init__(self, email, password, first_name, last_name, username):
         self.email = email

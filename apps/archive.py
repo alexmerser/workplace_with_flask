@@ -4,5 +4,5 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash, _app_ctx_stack
 
 @app.route('/')
-def hello():
-    return redirect("/login")
+def index():
+    return redirect(url_for("signup"))

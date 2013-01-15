@@ -1,4 +1,6 @@
-<form action="{{ url_for('login') }}" method="post">
+{% block body %}
+<form action="{{ url_for('signin') }}" method="post">
+<form action="{{ url_for('signup') }}" method="post">
     {{ form.hidden_tag() }}
     <ul>
         <li>
@@ -21,3 +23,4 @@
         </li>
     <input type="submit" value="Submit">
 </form>
+{% endblock %}
