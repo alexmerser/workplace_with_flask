@@ -1,5 +1,9 @@
 from flask import Flask
 from apps import app
 
-app.run(debug=True)
+
+app.debug = config.DEBUG
+
+
+app.run()
 
