@@ -1,11 +1,15 @@
 # configuration
 import os
 ROOT = os.path.abspath(os.path.dirname(__file__))
+
+CSRF_ENABLED = True
+SECRET_KEY = 'you-will-never-guess'
+
 DATABASE = 'dev.db'
-DEBUG = True
-SECRET_KEY = 'development key'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(ROOT, DATABASE)
+
 USERNAME = 'admin'
 PASSWORD = 'default'
-SQLALCHEMY_DATABASE_URI = "sqlite:///%s/dev.db" % ROOT
-CSRF_ENABLED = True
+
 DEBUG_TB_INTERCEPT_REDIRECTS = False
+DEBUG = True

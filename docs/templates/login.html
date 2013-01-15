@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>   
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Workplace - Log in</title>
+	<meta name="description" content="Tüfekçi Group">
+	<meta name="author" content="Mustafa Demirkent">
+	<meta name="viewport" content="width=device-width"> 
+	<link href="./css/reset.css" rel="stylesheet" />
+	<link href="./css/text.css" rel="stylesheet" />
+	<link href="./css/main.css" rel="stylesheet" />		
+</head>
+
+<body class="signup">
+	<div id="wrapper">
+
+			<header id="page_header"> 
+				<div id="page_header_apps">  
+					 <ul>
+					 	<li><a href="" id="workplace">Workplace</a></li> 
+						<li><a href="archive.html">Archive</a></li>
+						<li><a href="news.html">News</a></li>
+						<li><a href="todo.html">To-Do List</a></li>
+					</ul>
+				</div> 
+				<div id="page_header_content">	
+					
+<!-- 					<div id="app_header_buttons" class="header_buttons">
+						<ul>
+							<li><div>Add</div></li>
+							<li><div>Edit</div></li>
+							<li><div>Delete</div></li>
+						</ul>					
+					</div>
+
+					<div id="user_header_buttons" class="header_buttons">
+						<ul>
+							<li><div>Messages</div></li>
+							<li><div>Notifications</div></li>
+							<li><div>Profile</div></li>
+							<li><div>Settings</div></li>
+						</ul>					
+					</div> -->
+
+					<div id="page_header_register" class="fr">
+						<form method="post">
+							<fieldset>
+								<input class="textbox small_textbox" placeholder="Email" type="text" />
+								<span id="password_wrapper">
+									<input class="textbox small_textbox" placeholder="Password" type="text" />
+									<a href="forgotpass.html">forget ?</a>
+								</span>
+								<input class="submit_button" type="submit" value="Log In" />
+								<a class="submit_button" href="signup.html">Sign Up</a>
+							</fieldset>
+						</form>
+					</div> 
+				</div> 
+			</header> 
+			<div id="page_content">
+				<form id="main_form" method="post" >
+					<fieldset>
+						<legend>Log in</legend>
+						<div id="error_block" class="message_block error_block">??</div>   
+						<ul> 
+							<li>
+								<input class="textbox full_textbox"  id ="txt_email" name="email" type="text" placeholder="Email" />
+							</li> 
+							<li>
+								<input class="textbox full_textbox"  id ="txt_password" name="password" type="text"  placeholder="Password" />
+							</li>
+						</ul> 
+						<div class="align_right">
+							<input class="submit_button" id="btn_signup" type="submit" value="Log in" />
+						</div> 
+					</fieldset>
+				</form>   
+			</div> 
+		</div>  
+	</div> 
+
+	<script src="./scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+	<script src="./scripts/helper.js" type="text/javascript"></script>
+	<script src="./scripts/plugins.js" type="text/javascript"></script>
+	<script src="./scripts/main.js" type="text/javascript"></script> 
+  </body>	
+</html>
