@@ -1,1 +1,1 @@
-ssh -v -i workspace.pem ubunt@ec2-23-22-43-154.compute-1.amazonaws.com
+ssh -v -i wp.pem ubuntu@ec2-107-20-101-126.compute-1.amazonaws.com
