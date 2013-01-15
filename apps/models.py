@@ -67,3 +67,5 @@ class UserApp(db.Model):
 
     def __repr__(self):
         return "<UserApp: %s>" % self.app.name
+
+
