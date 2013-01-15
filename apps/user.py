@@ -32,14 +32,14 @@ def signup():
     return render_template("signup.html", form=form)
     
 @app.route("/signin", methods=("GET", "POST"))
-def signin():
-    form = SigninForm()
+def login():
+    form = LoginForm()
     if form.validate_on_submit():
-        flash("Signin Success")
-        can_login = User.can_signin(form.email.data, form.password.data)
+        flash("Login Success")
+        can_login = User.login(form.email.data, form.password.data)
         if can_login:
             return redirect("/")
-    return render_template("signin.html", form=form)
+    return render_template("login.html", form=form)
 
 @app.route("/signout", methods=("GET"))
 def signout():
