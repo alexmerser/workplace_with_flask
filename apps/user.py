@@ -28,7 +28,7 @@ def signup():
         user = User(form.email.data, form.password.data, form.first_name.data, form.last_name.data, form.username.data)
         db.session.add(user)
         db.session.commit()
-        return redirect("/")
+        return redirect(url_for('login'))
     return render_template("signup.html", form=form)
     
 @app.route("/login", methods=("GET", "POST"))
