@@ -17,6 +17,16 @@ db = SQLAlchemy(app)
 from flask.ext.login import LoginManager
 login_manager = LoginManager()
 login_manager.setup_app(app)
+from apps.models import Anonymous
+login_manager.anonymous_user = Anonymous
+login_manager.login_view = "login"
+login_manager.login_message = u"Please log in to access this page."
+login_manager.refresh_view = "reauth"
+
+from apps.models import User
+@login_manager.user_loader
+def load_user(id):
+    return User.get_user(id)
 
 #Admin
 from flask.ext.admin import Admin

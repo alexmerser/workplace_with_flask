@@ -5,6 +5,11 @@ from flask import Flask, request, session, g, redirect, url_for, abort, \
 
 from flask.ext.wtf import Form, TextField, Required,  \
     PasswordField
+
+from flask.ext.login import (LoginManager, current_user, login_required,
+        login_user, logout_user, UserMixin, AnonymousUser,
+        confirm_login, fresh_login_required)
+
 from apps.models import User
 from apps import db
 
@@ -19,6 +24,10 @@ class SignupForm(Form):
 class LoginForm(Form):
     email = TextField("Email", validators = [Required()])
     password = PasswordField("password", validators = [Required()])
+
+@app.route('/')
+def index():
+    return render_template("home.html")
 
 @app.route("/signup", methods=("GET", "POST"))
 def signup():
@@ -35,12 +44,17 @@ def signup():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash("Login Success")
-        can_login = User.login(form.email.data, form.password.data)
-        if can_login:
+        user = User.login(form.email.data, form.password.data)
+        if user:
+            flash("Login Success")
+            login_user(user, remember=True)
             return redirect("/")
+        else:
+            flash("Login failed")
     return render_template("login.html", form=form)
 
-@app.route("/signout", methods=("GET"))
+@app.route("/signout", methods=("GET",))
+@login_required
 def signout():
+    logout_user()
     return redirect("/")

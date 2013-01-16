@@ -1,7 +1,12 @@
 from apps import db
 from datetime import datetime
 
-class User(db.Model):
+from flask.ext.login import AnonymousUser, UserMixin
+
+class Anonymous(AnonymousUser):
+    name = u"Anonymous"
+
+class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100), nullable=False)
@@ -13,14 +18,20 @@ class User(db.Model):
     date_last_activity = db.Column(db.Date, nullable=True)
     password_reset_code = db.Column(db.String(100), nullable=True)
 
-    @classmethod
-    def login(cls, email, password):
-        users = cls.query.filter_by(email=email, password=password)
+    @staticmethod
+    def login(email, password):
+        users = User.query.filter_by(email=email, password=password)
         if users:
-            return True
+            return users[0]
         else:
-            return False
+            return None
         
+    @staticmethod
+    def get_user(user_id):
+        user = User.query.filter_by(id=user_id)
+        if user:
+            return user[0]
+        return None
     
     def __init__(self, email, password, first_name, last_name, username):
         self.email = email
