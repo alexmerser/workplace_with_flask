@@ -12,6 +12,9 @@ from apps import db
 
 from apps.forms import SignupForm, LoginForm
 
+from datetime import datetime
+
+
 @app.route('/')
 def index():
     return render_template("home.html")
@@ -40,6 +43,9 @@ def login():
         if user:
             flash("Login Success")
             login_user(user, remember=True)
+            user.date_last_login = datetime.utcnow()
+            db.session.add(user)
+            db.session.commit()
             return redirect("/")
         else:
             flash("Login failed")
