@@ -10,6 +10,6 @@ class SignupForm(Form):
     username = TextField("User Name", validators = [Required()])
 
 class LoginForm(Form):
-    email = TextField("Email", validators = [Required()])
+    email = TextField("Email", validators = [Required(), Email()])
     password = PasswordField("password", validators = [Required()])
 
