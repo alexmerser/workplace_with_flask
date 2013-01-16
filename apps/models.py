@@ -13,9 +13,9 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     username = db.Column(db.String(100), nullable=False)
-    date_signed_up = db.Column(db.Date, nullable=False)
-    date_last_login = db.Column(db.Date, nullable=True)
-    date_last_activity = db.Column(db.Date, nullable=True)
+    date_signed_up = db.Column(db.DateTime, nullable=False)
+    date_last_login = db.Column(db.DateTime, nullable=True)
+    date_last_activity = db.Column(db.DateTime, nullable=True)
     password_reset_code = db.Column(db.String(100), nullable=True)
 
     @staticmethod
@@ -24,17 +24,17 @@ class User(db.Model, UserMixin):
         if passed authentication, then return the User object
         else return None
         """
-        users = User.query.filter_by(email=email, password=password)
-        if users:
-            return users[0]
+        user = User.query.filter_by(email=email, password=password).first()
+        if user:
+            return user
         else:
             return None
         
     @staticmethod
     def get_user(user_id):
-        user = User.query.filter_by(id=user_id)
+        user = User.query.filter_by(id=user_id).first()
         if user:
-            return user[0]
+            return user
         return None
     
     def __init__(self, email, password, first_name, last_name, username):
