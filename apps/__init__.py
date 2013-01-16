@@ -39,3 +39,7 @@ import apps.todolist
 import apps.user
 import apps.models
 import apps.admin
+
+# RESTful APIs
+if config.REST_API_ENABLED:
+    import apps.api
