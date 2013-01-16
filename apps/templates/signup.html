@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block body %}
+{% if form.errors %}
+    <div class="errors">
+        <ul>
+       {% for key, error in form.errors.iteritems() %}
+            <li> {{ form.__dict__.get(key).label.text }} : {{ error|join(', ') }}</li>
+        {% endfor %} 
+        </ul>
+    </div>
+{% endif %}
 <form action="{{ url_for('signup') }}" method="post">
     {{ form.hidden_tag() }}
     <ul>

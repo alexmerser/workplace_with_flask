@@ -20,6 +20,10 @@ class User(db.Model, UserMixin):
 
     @staticmethod
     def login(email, password):
+        """Query against the User table,
+        if passed authentication, then return the User object
+        else return None
+        """
         users = User.query.filter_by(email=email, password=password)
         if users:
             return users[0]

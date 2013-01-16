@@ -19,7 +19,12 @@ def index():
 @app.route("/signup", methods=("GET", "POST"))
 def signup():
     form = SignupForm()
+    error = None
     if form.validate_on_submit():
+        if form.password.data != form.password2.data:
+            form.errors.update({"password" : ["passwords don't match"]})
+            return render_template("signup.html", form=form)
+            
         flash("Signup Success")
         user = User(form.email.data, form.password.data, form.first_name.data, form.last_name.data, form.username.data)
         db.session.add(user)
