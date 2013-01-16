@@ -10,3 +10,4 @@ WTForms==1.0.2
 Werkzeug==0.8.3
 blinker==1.2
 wsgiref==0.1.2
+Flask-Restless==0.8.0
