@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(100), nullable=False)
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
-    username = db.Column(db.String(100), nullable=False)
+    username = db.Column(db.String(100), nullable=True)
     date_signed_up = db.Column(db.DateTime, nullable=False)
     date_last_login = db.Column(db.DateTime, nullable=True)
     date_last_activity = db.Column(db.DateTime, nullable=True)
@@ -44,12 +44,11 @@ class User(db.Model, UserMixin):
             return user
         return None
     
-    def __init__(self, email, password, first_name, last_name, username):
+    def __init__(self, email, password, first_name, last_name):
         self.email = email
         self.password = password
         self.first_name = first_name
         self.last_name = last_name
-        self.username = username
         self.date_signed_up = datetime.utcnow()
 
     def __repr__(self):

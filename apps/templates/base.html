@@ -17,23 +17,35 @@
 {% block header %}
 		<header id="page_header"> 
 			<div id="page_header_apps">  
-			 	<a href="" id="workplace">Workplace</a> 
+			 	<a href="/" id="workplace">Workplace</a> 
 			</div> 
 			<div id="page_header_content">	 
+                    {% if current_user.is_authenticated() %} 
+				<div id="user_header_buttons" class="header_buttons fr">
+					<ul>
+						<li><a href="{{ url_for('messages')}}">Messages</a></li>
+						<li><a href="{{ url_for('notifications') }}">Notifications</a></li>
+						<li><a href="{{ url_for('profile') }}">Profile</a></li>
+						<li><a href="{{ url_for('settings') }}">Settings</a></li>
+                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    </ul>
+                </div>
+                    {% else %} 
 				<div id="page_header_register" class="fr">
-					<form method="post">
+					<form method="post" action="{{ url_for('hlogin') }}">
 						<fieldset>
 							<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
 							<span id="password_wrapper">
-								<input class="textbox small_textbox" name="password" placeholder="Password" type="text" />
+								<input class="textbox small_textbox" name="password" placeholder="Password" type="password" />
 								<a href="{{ url_for('forgot') }}">forgot ?</a>
 							</span>
 							<input class="submit_button" type="submit" value="Log In" />
-							<a class="submit_button" href="signup.html">Sign Up</a>
+							<a class="submit_button" href="{{ url_for('signup') }}">Sign Up</a>
 						</fieldset>
 					</form>
 				</div>
 			</div>  
+                {% endif %}
 		</header> 
 
 {% endblock %}
