@@ -10,7 +10,7 @@ from flask.ext.login import (LoginManager, current_user, login_required,
 from apps.models import User
 from apps import db
 
-from apps.forms import SignupForm, LoginForm
+from apps.forms import SignupForm, LoginForm, ForgotForm
 
 from datetime import datetime
 
@@ -56,3 +56,20 @@ def login():
 def signout():
     logout_user()
     return redirect("/")
+
+@app.route("/forgot", methods=("GET", "POST"))
+def forgot():
+    form = ForgotForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        if User.is_signed_email(email):
+            # send a reset_password email
+            flash("The reset password email has been sent")
+            return redirect(url_for("succ"))
+        else:
+            flash("The email doesn't exist.")
+    return render_template("forgot.html", form=form)
+
+@app.route("/succ", methods=("GET", ))
+def succ():
+    return render_template("succ.html")

@@ -13,3 +13,7 @@ class LoginForm(Form):
     email = TextField("Email", validators = [Required(), Email()])
     password = PasswordField("password", validators = [Required()])
 
+
+class ForgotForm(Form):
+    email = TextField("Email", validators = [Required(), Email()])
+

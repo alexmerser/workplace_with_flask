@@ -12,17 +12,43 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
+	<div id="wrapper"> 
 <!-- header -->
 {% block header %}
+		<header id="page_header"> 
+			<div id="page_header_apps">  
+			 	<a href="" id="workplace">Workplace</a> 
+			</div> 
+			<div id="page_header_content">	 
+				<div id="page_header_register" class="fr">
+					<form method="post">
+						<fieldset>
+							<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
+							<span id="password_wrapper">
+								<input class="textbox small_textbox" name="password" placeholder="Password" type="text" />
+								<a href="{{ url_for('forgot') }}">forgot ?</a>
+							</span>
+							<input class="submit_button" type="submit" value="Log In" />
+							<a class="submit_button" href="signup.html">Sign Up</a>
+						</fieldset>
+					</form>
+				</div>
+			</div>  
+		</header> 
 
 {% endblock %}
 <!-- header end -->
+
+{% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+{% endfor %}
 
 <!-- body -->
 {% block body %}
 
 {% endblock %}
 <!-- body end -->
+	</div> 
 
 <!-- footer -->
 {% block footer %}

@@ -1,36 +1,15 @@
 {% extends "base.html" %}
 {% block body %}
-	<div id="wrapper"> 
-		<header id="page_header"> 
-			<div id="page_header_apps">  
-			 	<a href="" id="workplace">Workplace</a> 
-			</div> 
-			<div id="page_header_content">	 
-				<div id="page_header_register" class="fr">
-					<form method="post">
-						<fieldset>
-							<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
-							<span id="password_wrapper">
-								<input class="textbox small_textbox" name="password" placeholder="Password" type="text" />
-								<a href="forgotpass.html">forget ?</a>
-							</span>
-							<input class="submit_button" type="submit" value="Log In" />
-							<a class="submit_button" href="signup.html">Sign Up</a>
-						</fieldset>
-					</form>
-				</div>
-			</div>  
-		</header> 
 		<div id="page_content">   
-{% if form.errors %}
-    <div class="errors">
-        <ul>
-       {% for key, error in form.errors.iteritems() %}
-            <li> {{ form.__dict__.get(key).label.text }} : {{ error|join(', ') }}</li>
-        {% endfor %} 
-        </ul>
-    </div>
-{% endif %}
+            {% if form.errors %}
+                <div class="errors">
+                    <ul>
+                   {% for key, error in form.errors.iteritems() %}
+                        <li> {{ form.__dict__.get(key).label.text }} : {{ error|join(', ') }}</li>
+                    {% endfor %} 
+                    </ul>
+                </div>
+            {% endif %}
 			<form id="main_form" method="post" action="{{ url_for('signup') }}">
                 {{ form.hidden_tag() }}
 				<fieldset>
@@ -61,5 +40,4 @@
 				</fieldset>
 			</form>   
 		</div>  
-	</div> 
 {% endblock %}

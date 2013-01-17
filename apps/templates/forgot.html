@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block body %}
+		<div id="page_content">
+            {% if form.errors %}
+                <div class="errors">
+                    <ul>
+                   {% for key, error in form.errors.iteritems() %}
+                        <li> {{ form.__dict__.get(key).label.text }} : {{ error|join(', ') }}</li>
+                    {% endfor %} 
+                    </ul>
+                </div>
+            {% endif %}
+			<form id="main_form" method="post"  action="{{ url_for('forgot') }}">  
+                {{ form.hidden_tag() }}
+				<fieldset>
+					<legend>Recover password</legend>
+					<div class="help_text">
+						Instructions to reset your password will be sent to your registered email address.
+					</div>
+					<div id="error_block" class="message_block error_block">??</div>   
+					<ul>  
+						<li>
+							<input class="textbox full_textbox"  id ="txt_email" name="email" type="text" placeholder="Email" />
+						</li>
+					</ul> 
+					<div class="align_right">
+						<input class="submit_button" id="btn_signup" type="submit" value="Recover password" />
+					</div> 
+				</fieldset>
+			</form>  
+		</div> 
+{% endblock %}

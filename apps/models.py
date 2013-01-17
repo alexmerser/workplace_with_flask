@@ -29,6 +29,13 @@ class User(db.Model, UserMixin):
             return user
         else:
             return None
+
+    @staticmethod
+    def is_signed_email(email):
+        user = User.query.filter_by(email=email)
+        if user:
+            return True
+        return False
         
     @staticmethod
     def get_user(user_id):
