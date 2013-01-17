@@ -21,4 +21,4 @@ Architecture simply shows how different apps use API within Workplace to speak t
 
 # Deployment
 
-1. http://ec2-107-20-101-126.compute-1.amazonaws.com:5000/signup
+1. http://www.workplace.is
