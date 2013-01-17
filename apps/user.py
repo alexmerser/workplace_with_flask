@@ -43,7 +43,7 @@ def signup():
     
 @app.route("/login", methods=("GET", "POST"))
 def login():
-    form = LoginForm()
+    form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.login(form.email.data, form.password.data)
         if user:
