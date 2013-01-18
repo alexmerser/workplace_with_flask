@@ -1,5 +1,7 @@
 jQuery(document).ready(function ($) {
 	
+	//$('select').dropkick(); 
+
 	$('#add_news').focus(function () {
 		var $this = $(this);
 		$this.attr('rows',5); 
@@ -62,8 +64,8 @@ jQuery(document).ready(function ($) {
 		}
 	});
 
-	$('#todo_list').find('input[type="checkbox"]').change(function () {
-		$(this).next().toggleClass('striked');
+	$('#todos').find('input[type="checkbox"]').change(function () {
+		$(this).parent().toggleClass('striked');
 	});
 
 	$('[data-toggler]').each(function () {
@@ -74,7 +76,7 @@ jQuery(document).ready(function ($) {
 	})
 
 	var select = $('.select')
-	select.find('li').find('a').click(function () {
+	select.on('click','li > a', function () {
 		var $this = $(this); 
 		$this.closest('.select').find('.active').removeClass('active');
 		$this.addClass('active');
@@ -114,14 +116,21 @@ jQuery(document).ready(function ($) {
 		         	}); 
 		         	return process(tags_source);
 		        });
+		    },
+		    updater:function (item) { 
+		       	tags.append('<div class="tag clearfix"><span class="title">' + item + '</span><a href="#" class="clear_btn fr">clear</a></div>');
+				return '';
 		    }
-		})
-		.keydown(function (e) { 
-			if(e.keyCode === 13) {
-				tags.append('<div class="tag clearfix"><span class="title">' + this.value + '</span><a href="#" class="clear_btn fr">clear</a></div>');
-				this.value = '';
-			}			
 		});
+ 
+	$.get('server.php',{ action: 'get_network'}, function (list) {
+		var privacy_list = '<li><a href="#" data-action="me">Only Me</a></li>';
+		for(var i = 0,len = list.length; i < len ; i++) {
+			privacy_list += '<li><a href="#" data-action="' + list[i] + '">' + list[i] + '</li>';
+		}
+		privacy_list += '<li><a href="#" data-action="public">Public</a></li>';
+		$('[data-bind="privacy_list"]').html(privacy_list);
+	});
+	
 
-	 
 });
