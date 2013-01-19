@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>   
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -11,70 +12,72 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/text.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/main.css') }}">
 </head>
+
 <body>
-	<div id="wrapper"> 
-<!-- header -->
-{% block header %}
-		<header id="page_header"> 
-			<div id="page_header_apps">  
-			 	<a href="/" id="workplace">Workplace</a> 
+	<div id="wrapper">
+
+		<!-- header -->
+		<header id="page_header" class="clearfix"> 
+			<div id="page_header_apps">
+				<ul> 
+					<li><a href="{{ url_for('index') }}">Workplace</a></li>
+					<li><a href="{{ url_for('index') }}">Archive</a></li>
+					<li><a href="{{ url_for('index') }}">News</a></li>
+					<li><a href="{{ url_for('index') }}">To-Dos</a></li>
+				</ul>
 			</div> 
 			<div id="page_header_content">	 
-                    {% if current_user.is_authenticated() %} 
-				<div id="user_header_buttons" class="header_buttons fr">
-					<ul>
-						<li><a href="{{ url_for('messages')}}">Messages</a></li>
-						<li><a href="{{ url_for('notifications') }}">Notifications</a></li>
-						<li><a href="{{ url_for('profile') }}">Profile</a></li>
-						<li><a href="{{ url_for('settings') }}">Settings</a></li>
-                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-                    </ul>
-                </div>
-                    {% else %} 
-				<div id="page_header_register" class="fr">
-					<form method="post" action="{{ url_for('hlogin') }}">
-						<fieldset>
-							<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
-							<span id="password_wrapper">
-								<input class="textbox small_textbox" name="password" placeholder="Password" type="password" />
-								<a href="{{ url_for('forgot') }}">forgot ?</a>
-							</span>
-							<input class="submit_button" type="submit" value="Log In" />
-							<a class="submit_button" href="{{ url_for('signup') }}">Sign Up</a>
-						</fieldset>
-					</form>
-				</div>
+                {% if current_user.is_authenticated() %} 
+					<div id="user_header_buttons" class="header_buttons fr">
+						<ul>
+							<li><a href="{{ url_for('messages') }}">Messages</a></li>
+							<li><a href="{{ url_for('notifications') }}">Notifications</a></li>
+							<li><a href="{{ url_for('profile') }}">Profile</a></li>
+							<li><a href="{{ url_for('settings') }}">Settings</a></li>
+	                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+	                    </ul>
+	                </div>
+                {% else %} 
+					<div id="page_header_register" class="fr">
+						<form method="post" action="{{ url_for('hlogin') }}">
+							<fieldset>
+								<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
+								<span id="password_wrapper">
+									<input class="textbox small_textbox" name="password" placeholder="Password" type="password" />
+									<a href="{{ url_for('forgot') }}">forgot ?</a>
+								</span>
+								<input class="submit_button" type="submit" value="Log In" />
+								<a class="submit_button" href="{{ url_for('signup') }}">Sign Up</a>
+							</fieldset>
+						</form>
+					</div>
+				{% endif %}
 			</div>  
-                {% endif %}
 		</header> 
+		<!-- header end -->
 
-{% endblock %}
-<!-- header end -->
+		{% for message in get_flashed_messages() %}
+			<div class="flash">{{ message }}</div>
+		{% endfor %}
 
-{% for message in get_flashed_messages() %}
-    <div class=flash>{{ message }}</div>
-{% endfor %}
+		<!-- body -->
+		{% block body %}
 
-<!-- body -->
-{% block body %}
+		{% endblock %}
+		<!-- body end -->
 
-{% endblock %}
-<!-- body end -->
+		<!-- footer -->
+		{% block footer %}
+
+		{% endblock %}
+		<!-- footer end -->
+
 	</div> 
 
-<!-- footer -->
-{% block footer %}
-
-{% endblock %}
-<!-- footer end -->
-
-
-  {% block footer_script %}
 	<script src="{{ url_for('static', filename='scripts/jquery-1.8.2.min.js') }}" type="text/javascript"></script>
 	<script src="{{ url_for('static', filename='scripts/helper.js') }}" type="text/javascript"></script>
 	<script src="{{ url_for('static', filename='scripts/plugins.js') }}" type="text/javascript"></script>
 	<script src="{{ url_for('static', filename='scripts/main.js') }}" type="text/javascript"></script>
-  {% endblock %}
 
 </body>
 </html>
