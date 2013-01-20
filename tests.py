@@ -43,5 +43,9 @@ class WorkplaceTest(TestCase):
         users = User.query.all()
         assert len(users) == user_count+1
 
+    # Testing Views
+    def test_user(self):
+        pass
+
 if __name__ == "__main__":
     unittest.main()
