@@ -579,7 +579,7 @@ ul[data-toggle] {
 
 
 /* Archive.html */
-#archive_feed {
+#archive_content {
 	width: 807px;
 }
 
@@ -597,45 +597,55 @@ ul[data-toggle] {
 	display: block;
 }
 
-/* Settings.html */
-#settings_nav {
+/* a_<page>.html */
+#page_nav {
 	width: 159px;
 	border-right: 1px solid #CCC;
 }
 
-#mini_user_profile {
+#account_mini_profile {
 	border-bottom: 1px solid #CCC;
 }
 
-#settings_form {
-	margin: 40px 340px 0 340px;
+#account_content {
+	width: 807px;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+#account_form {
 	width: 300px;
 }
 
-#settings_form legend{
+#account_content legend{
 	color:#333;
 	font-size:16px;
 	margin-bottom:10px; 
 } 
 
-#settings_form li { 
+#account_content li { 
 	list-style: none;
 	margin-bottom: 8px;
 }
   
-#settings_form .error_text {
+#account_content .error_text {
 	margin-bottom:2px;
 	border:1px solid red;
 	padding:3px;
 } 
 
-#settings_form .message_block { 
+#account_content .message_block { 
 	margin-bottom: 5px;
 	font-size: 12px;
 	color: #333;
 }
 
-#settings_form .error_block {
+#account_content .error_block {
 	color:red;
 	display: none;
+}
+
+#application_status {
+	color:#999;
+	font-style: italic;
 }

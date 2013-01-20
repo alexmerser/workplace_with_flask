@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="page_content" class="clearfix">
+	
+	{% include "account_nav.html" %}
+
+	<div id="account_content" class="column">
+		<fieldset>
+			<legend>Account/Applications</legend>
+			<div id="error_block" class="message_block error_block">??</div>   
+			<ul> 
+				<li>
+					Archive <span id="application_status">OK</span> <a id="application_reset" href="/a/applications/remove/archive">Remove</a>
+				</li>
+				<li>
+					News <span id="application_status">Pending removal. 5hrs left.</span> <a id="application_reset" href="/a/applications/cancel_removal/archive">Cancel Removal</a>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>More Applications</legend>
+			<ul> 
+				<li>
+					To-Do List <a id="application_add" href="/a/applications/remove/archive">Add</a>
+				</li>
+			</ul>
+		</fieldset>
+	</div>
+
+</div>
+{% endblock %}

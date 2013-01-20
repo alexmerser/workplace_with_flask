@@ -3,39 +3,26 @@
 {% block body %}
 <div id="page_content" class="clearfix">
 	
-	<aside id="settings_nav" class="column">
-		<section id="mini_user_profile" class="section">
-			<h4><a href="#">Dogukan Tufekci</a></h4>
+	{% include "account_nav.html" %}
 
-		</section>
-		<section class="section">
-			<h4><a href="{{ url_for('a_general') }}">General</a></h4>
-			<h4><a href="{{ url_for('a_applications') }}">Applications</a></h4>
-			<h4><a href="{{ url_for('a_emails') }}">Emails</a></h4>
-			<h4><a href="{{ url_for('a_lists') }}">Lists</a></h4>
-			<h4><a href="{{ url_for('a_password') }}">Password</a></h4>
-			<h4><a href="{{ url_for('a_profile') }}">Profile</a></h4>
-		</section>
-	</aside>
-
-	<form id="main_form" method="post" action="{{ url_for('a_general') }}">
+	<div id="account_content" class="column">
+		<form id="account_form" method="post" action="{{ url_for('a_general') }}">
 			{{ form.hidden_tag() }}
 			<fieldset>
-				<legend>Log in</legend>
+				<legend>Account/General</legend>
 				<div id="error_block" class="message_block error_block">??</div>   
 					<ul> 
 						<li>
-							<input class="textbox full_textbox"  id ="txt_email" name="email" type="text" placeholder="Email" />
-						</li> 
-						<li>
-							<input class="textbox full_textbox"  id ="txt_password" name="password" type="password"  placeholder="Password" />
+							<label>Username</label>
+							<input class="textbox full_textbox"  id ="txt_password" name="username" type="text" />
 						</li>
 					</ul> 
 				<div class="align_right">
-					<input class="submit_button" id="btn_signup" type="submit" value="Log in" />
+					<input class="submit_button" type="submit" value="Update" />
 				</div> 
 			</fieldset>
 		</form>   
+	</div>
 
 </div>
 {% endblock %}

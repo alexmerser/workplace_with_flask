@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div id="page_content" class="clearfix">
+	
+	{% include "account_nav.html" %}
+
+	<div id="account_content" class="column">
+		<form id="account_form" method="post" action="{{ url_for('a_profile') }}">
+			{{ form.hidden_tag() }}
+			<fieldset>
+				<legend>Account/Lists</legend>
+				<div id="error_block" class="message_block error_block">??</div>   
+					<ul> 
+						<li>
+							<label>First Name</label>
+							<input class="textbox full_textbox" name="first_name" />
+						</li>
+						<li>
+							<label>Last Name</label>
+							<input class="textbox full_textbox" name="first_name" />
+						</li>
+						<li>
+							<label>Male</label>
+							<input type="radio" name="sex" value="male"/>
+							<label>Female</label>
+							<input type="radio" name="sex" value="female"/>
+						</li>
+						<li>
+							<label>Birthday</label>
+							<select>
+							  <option value="">Day</option>
+							  <option value="1">1</option>
+							  <option value="2">2</option>
+							  <option value="3">3</option>
+							</select>
+							<select>
+							  <option value="">Month</option>
+							  <option value="1">Jan</option>
+							  <option value="2">Feb</option>
+							  <option value="3">Mar</option>
+							</select>
+							<select>
+							  <option value="">Year</option>
+							  <option value="2000">2000</option>
+							  <option value="1999">1999</option>
+							  <option value="1998">1998</option>
+							</select>
+						</li>
+					</ul> 
+				<div class="align_right">
+					<input class="submit_button" type="submit" value="Update" />
+				</div> 
+			</fieldset>
+		</form>   
+	</div>
+
+</div>
+{% endblock %}

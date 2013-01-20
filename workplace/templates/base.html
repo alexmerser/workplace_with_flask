@@ -20,12 +20,10 @@
 		<header id="page_header" class="clearfix"> 
 			<div id="page_header_apps">
 				<ul> 
-					{% block page_header_apps %}
-						<li><a href="{{ url_for('workplace') }}">Workplace</a></li>
-						<li><a href="{{ url_for('archive') }}">Archive</a></li>
-						<li><a href="{{ url_for('news') }}">News</a></li>
-						<li><a href="{{ url_for('todo') }}">To-Do List</a></li>
-					{% endblock %}
+					<li><a href="">Workplace</a></li>
+					<li><a href="{{ url_for('archive') }}">Archive</a></li>
+					<li><a href="{{ url_for('news') }}">News</a></li>
+					<li><a href="{{ url_for('todo') }}">To-Do List</a></li>
 				</ul>
 			</div> 
 			<div id="page_header_content">	 
@@ -42,8 +40,8 @@
 						</ul>
 					</div>
                 {% else %} 
-					<div id="page_header_register" class="fr">
-						<form method="post" action="{{ url_for('hlogin') }}">
+					<div id="page_header_register" class="clearfix">
+						<form class="fr" method="post" action="{{ url_for('hlogin') }}">
 							<fieldset>
 								<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
 								<span id="password_wrapper">
@@ -55,6 +53,7 @@
 							</fieldset>
 						</form>
 					</div>
+
 				{% endif %}
 			</div>  
 		</header> 

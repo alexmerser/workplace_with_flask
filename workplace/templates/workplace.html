@@ -1,12 +1,5 @@
 {% extends "base.html" %}
 
-{% block page_header_apps %}
-<li><a href="{{ url_for('workplace') }}">Workplace</a></li>
-<li><a href="{{ url_for('archive') }}">Archive</a></li>
-<li><a href="{{ url_for('news') }}">News</a></li>
-<li><a href="{{ url_for('todo') }}">To-Do List</a></li>
-{% endblock %}
-
 {% block page_header_content%}
 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
 {% endblock %}
