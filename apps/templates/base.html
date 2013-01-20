@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>Workplace - {{ title }}</title>
 	<meta name="description" content="Workplace">
-	<meta name="author" content="Zhu Tao">
+	<meta name="author" content="Dogukan Tufekci, Jashwant Singh Chaudhary, Zhu Tao">
 	<meta name="viewport" content="width=device-width"> 
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/reset.css') }}">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/text.css') }}">
@@ -44,10 +44,10 @@
 								<input class="textbox small_textbox" name="email" placeholder="Email" type="text" />
 								<span id="password_wrapper">
 									<input class="textbox small_textbox" name="password" placeholder="Password" type="password" />
-									<a href="{{ url_for('forgot') }}">forgot ?</a>
+									<a href="{{ url_for('reset_password') }}">forgot?</a>
 								</span>
 								<input class="submit_button" type="submit" value="Log In" />
-								<a class="submit_button" href="{{ url_for('signup') }}">Sign Up</a>
+								<a class="submit_button" href="{{ url_for('register') }}">Register</a>
 							</fieldset>
 						</form>
 					</div>

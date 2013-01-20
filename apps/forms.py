@@ -1,6 +1,6 @@
 from flask.ext.wtf import Email, Form, PasswordField, Required, TextField
 
-class SignupForm(Form):
+class RegisterForm(Form):
     first_name = TextField("First Name", validators = [Required()])
     last_name = TextField("Last Name", validators = [Required()])
     email = TextField("Email", validators = [Required(), Email()])
@@ -12,7 +12,6 @@ class LoginForm(Form):
     email = TextField("Email", validators = [Required(), Email()])
     password = PasswordField("password", validators = [Required()])
 
-
-class ForgotForm(Form):
+class ResetPasswordForm(Form):
     email = TextField("Email", validators = [Required(), Email()])
 

@@ -24,6 +24,7 @@ login_manager.login_message = u"Please log in to access this page."
 login_manager.refresh_view = "reauth"
 
 from apps.models import User
+
 @login_manager.user_loader
 def load_user(id):
     return User.get_user(id)
@@ -31,7 +32,6 @@ def load_user(id):
 #Admin
 from flask.ext.admin import Admin
 site_admin = Admin(app)
-
 
 import apps.archive
 import apps.news
