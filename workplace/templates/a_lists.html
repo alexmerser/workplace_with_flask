@@ -6,53 +6,54 @@
 	{% include "account_nav.html" %}
 
 	<div id="account_content" class="column">
-		<form id="account_form" method="post" action="{{ url_for('a_profile') }}">
+		<form style="float:left" id="account_form" method="post" action="{{ url_for('a_profile') }}">
 			{{ form.hidden_tag() }}
 			<fieldset>
 				<legend>Account/Lists</legend>
 				<div id="error_block" class="message_block error_block">??</div>   
 					<ul> 
 						<li>
-							<label>First Name</label>
-							<input class="textbox full_textbox" name="first_name" />
+							<input class="textbox full_textbox" name="list_name" placeholder="Create a new list"/>
+							<input class="submit_button" type="submit" value="Create" />
 						</li>
 						<li>
-							<label>Last Name</label>
-							<input class="textbox full_textbox" name="first_name" />
+							Friends (235)
 						</li>
 						<li>
-							<label>Male</label>
-							<input type="radio" name="sex" value="male"/>
-							<label>Female</label>
-							<input type="radio" name="sex" value="female"/>
+							Family (215)
 						</li>
 						<li>
-							<label>Birthday</label>
-							<select>
-							  <option value="">Day</option>
-							  <option value="1">1</option>
-							  <option value="2">2</option>
-							  <option value="3">3</option>
-							</select>
-							<select>
-							  <option value="">Month</option>
-							  <option value="1">Jan</option>
-							  <option value="2">Feb</option>
-							  <option value="3">Mar</option>
-							</select>
-							<select>
-							  <option value="">Year</option>
-							  <option value="2000">2000</option>
-							  <option value="1999">1999</option>
-							  <option value="1998">1998</option>
-							</select>
+							Dance Club (123)
+						</li>
+						<li>
+							Programmers (51)
+						</li>
+						<li>
+							Colleagues (50)
+						</li>
+						<li>
+							Americans (5)
 						</li>
 					</ul> 
-				<div class="align_right">
-					<input class="submit_button" type="submit" value="Update" />
-				</div> 
 			</fieldset>
-		</form>   
+		</form>
+		<div style="float:left" id="list_members">
+			<form>
+				<!-- Input shall pull names from JSON to auto suggest -->
+				<input class="textbox full_textbox" name="user_name" placeholder="Add to 'Friends'"/>
+				<input class="submit_button" type="submit" value="Add" />
+			</form>
+			</form>
+			<li>
+				Dogukan Tufekci <a href="">Remove</a>
+			</li>
+			<li>
+				Jashwant Chaudhary <a href="">Remove</a>
+			</li>
+			<li>
+				Zhu Tao
+			</li>
+		</div>
 	</div>
 
 </div>
