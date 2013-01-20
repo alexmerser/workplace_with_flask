@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block body %}
+	<div id="page_content">
+		{% if form.errors %}
+			<div class="errors">
+				<ul>
+					{% for key, error in form.errors.iteritems() %}
+						<li> {{ form.__dict__.get(key).label.text }} : {{ error|join(', ') }}</li>
+					{% endfor %} 
+				</ul>
+			</div>
+		{% endif %}
+		<form id="main_form" method="post" action="{{ url_for('login') }}">
+			{{ form.hidden_tag() }}
+			<fieldset>
+				<legend>Log in</legend>
+				<div id="error_block" class="message_block error_block">??</div>   
+					<ul> 
+						<li>
+							<input class="textbox full_textbox"  id ="txt_email" name="email" type="text" placeholder="Email" />
+						</li> 
+						<li>
+							<input class="textbox full_textbox"  id ="txt_password" name="password" type="password"  placeholder="Password" />
+						</li>
+					</ul> 
+				<div class="align_right">
+					<input class="submit_button" id="btn_signup" type="submit" value="Log in" />
+				</div> 
+			</fieldset>
+		</form>   
+	</div> 
+{% endblock %}

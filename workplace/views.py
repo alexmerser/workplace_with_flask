@@ -1,27 +1,36 @@
-from apps import app
-
-from flask import Flask, request, session, g, redirect, url_for, abort, \
-     render_template, flash, _app_ctx_stack
-
-from flask.ext.login import (LoginManager, current_user, login_required,
-        login_user, logout_user, UserMixin, AnonymousUser,
-        confirm_login, fresh_login_required)
-
-from apps.models import User
-from apps import db
-
-from apps.forms import SignupForm, LoginForm, ForgotForm
-
 from datetime import datetime
+from flask import (Flask, request, session, g, redirect, url_for, abort,
+    render_template, flash, _app_ctx_stack)
+from flask.ext.login import (LoginManager, current_user, login_required,
+    login_user, logout_user, UserMixin, AnonymousUser,
+    confirm_login, fresh_login_required)
+from workplace import app
+from workplace.forms import RegisterForm, LoginForm, ResetPasswordForm
+from workplace.models import db, User
 
 
+#workplace applications
 @app.route('/')
-def index():
-    return render_template("home.html", title="Home Page")
+@app.route('/workplace')
+def workplace():
+    return render_template("workplace.html", title="Personal apps made for the connected world.")
 
-@app.route("/signup", methods=("GET", "POST"))
-def signup():
-    form = SignupForm()
+@app.route('/archive')
+def archive():
+    return render_template("archive.html", title="Archive")
+
+@app.route('/news')
+def news():
+    return render_template("news.html", title="News")
+
+@app.route('/todo')
+def todo():
+    return render_template("todo.html", title="To-Do List")
+
+#workplace pages
+@app.route("/register", methods=("GET", "POST"))
+def register():
+    form = RegisterForm()
     error = None
     has_error = False
     if form.validate_on_submit():
@@ -32,14 +41,14 @@ def signup():
             form.errors.update({"email" : ["Emails don't match"]})
             has_error = True
         if has_error:
-            return render_template("signup.html", form=form, title="Sign up")
+            return render_template("register.html", form=form, title="Register")
             
-        flash("Signup Success")
+        flash("Welcome to Workplace! You were successfully registered.")
         user = User(form.email.data, form.password.data, form.first_name.data, form.last_name.data)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
-    return render_template("signup.html", form=form, title="Sign Up")
+    return render_template("register.html", form=form, title="Register")
     
 @app.route("/login", methods=("GET", "POST"))
 def login():
@@ -81,18 +90,18 @@ def logout():
     logout_user()
     return redirect("/")
 
-@app.route("/forgot", methods=("GET", "POST"))
-def forgot():
-    form = ForgotForm()
+@app.route("/reset_password", methods=("GET", "POST"))
+def reset_password():
+    form = ResetPasswordForm()
     if form.validate_on_submit():
         email = form.email.data
         if User.is_signed_email(email):
             # send a reset_password email
-            flash("The reset password email has been sent")
+            flash("Your password has been reset. Create a new password by following the instructions sent to your email.")
             return redirect(url_for("succ"))
         else:
             flash("The email doesn't exist.")
-    return render_template("forgot.html", form=form, title="Forgot Pasword?")
+    return render_template("reset_password.html", form=form, title="Forgot Pasword?")
 
 @app.route("/succ", methods=("GET", ))
 def succ():
@@ -113,8 +122,6 @@ def settings():
 @login_required
 def messages():
     return render_template("messages.html", title="Messages")
-
-
 
 @app.route("/notifications", methods=("GET", ))
 @login_required

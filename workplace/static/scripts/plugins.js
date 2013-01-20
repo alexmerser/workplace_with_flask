@@ -59,12 +59,13 @@
       var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
       })
-
+      console.log(this);
       this.$menu
         .insertAfter(this.$element)
         .css({
           top: pos.top + pos.height
         , left: pos.left
+        , width: this.$element.width()
         })
         .show()
 
@@ -235,10 +236,10 @@
         case 16: // shift
         case 17: // ctrl
         case 18: // alt
-        case 13: // enter
-        break
+          break
 
-        case 9: // tab 
+        case 9: // tab
+        case 13: // enter
           if (!this.shown) return
           this.select()
           break
