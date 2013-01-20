@@ -5,7 +5,7 @@ from flask.ext.login import (LoginManager, current_user, login_required,
     login_user, logout_user, UserMixin, AnonymousUser,
     confirm_login, fresh_login_required)
 from workplace import app
-from workplace.forms import RegisterForm, LoginForm, ResetPasswordForm
+from workplace.forms import RegisterForm, LoginForm, ResetPasswordForm, ChangeUsernameForm
 from workplace.models import db, User
 
 
@@ -113,11 +113,6 @@ def succ():
 def profile():
     return render_template("profile.html", title="Profile")
 
-@app.route("/settings", methods=("GET", ))
-@login_required
-def settings():
-    return render_template("settings.html", title="Settings")
-
 @app.route("/messages", methods=("GET", ))
 @login_required
 def messages():
@@ -127,5 +122,37 @@ def messages():
 @login_required
 def notifications():
     return render_template("notifications.html", title="Notifications")
+
+#Account Pages
+@app.route("/a/general")
+@login_required
+def a_general():
+    form = ChangeUsernameForm()
+    return render_template("a_general.html", form=form, title="Account - General")
+
+@app.route("/a/applications")
+@login_required
+def a_applications():
+    return render_template("a_applications.html", title="Account - Applications")
+
+@app.route("/a/emails")
+@login_required
+def a_emails():
+    return render_template("a_emails.html", title="Account - Emails")
+
+@app.route("/a/lists")
+@login_required
+def a_lists():
+    return render_template("a_lists.html", title="Account - Password")
+
+@app.route("/a/password")
+@login_required
+def a_password():
+    return render_template("a_password.html", title="Account - Password")
+
+@app.route("/a/profile")
+@login_required
+def a_profile():
+    return render_template("a_profile.html", title="Account - Profile")
 
 
