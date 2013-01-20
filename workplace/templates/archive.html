@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block page_header_apps %}
+<li><a href="{{ url_for('archive') }}">Archive</a></li>
+<li><a href="{{ url_for('news') }}">News</a></li>
+<li><a href="{{ url_for('todo') }}">To-Do List</a></li>
+{% endblock %}
+
+{% block body %}
+<div id="page_content" class="clearfix"> 
+
+	<aside id="filter" class="column"> 
+		<section class="section">
+			<h4>Sort</h4>
+			<select id="sort_news">
+				<option>Most Recent</option>
+				<option>Most Commented</option> 
+			</select>
+		</section>
+		<section class="section">
+			<h4>Archivers</h4>
+			<input type="text" class="textbox full_textbox transparent"  />
+		</section>
+		<section class="section">
+			<h4>Kinds</h4>
+			<input type="text" autocomplete="off" class="textbox full_textbox transparent" />
+		</section> 
+		<section class="section">
+			<h4>Tags</h4>
+			<div id="tags"></div>
+			<input type="text" autocomplete="off" id="tags_input" class="textbox full_textbox transparent" />
+		</section>
+		<section class="section">
+			<h4>Titles</h4>
+			<div id="titles"></div>
+			<input type="text" autocomplete="off" id="tags_input" class="textbox full_textbox transparent" />
+		</section>
+	</aside> 
+
+	<div id="archive_feed" class="column"> 
+	</div>
+
+</div>  
+{% endblock %}

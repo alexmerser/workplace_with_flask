@@ -17,13 +17,13 @@ db = SQLAlchemy(app)
 from flask.ext.login import LoginManager
 login_manager = LoginManager()
 login_manager.setup_app(app)
-from apps.models import Anonymous
+from workplace.models import Anonymous
 login_manager.anonymous_user = Anonymous
 login_manager.login_view = "login"
 login_manager.login_message = u"Please log in to access this page."
 login_manager.refresh_view = "reauth"
 
-from apps.models import User
+from workplace.models import User
 
 @login_manager.user_loader
 def load_user(id):
@@ -33,13 +33,10 @@ def load_user(id):
 from flask.ext.admin import Admin
 site_admin = Admin(app)
 
-import apps.archive
-import apps.news
-import apps.todolist
-import apps.user
-import apps.models
-import apps.admin
+import workplace.views
+import workplace.models
+import workplace.admin
 
 # RESTful APIs
 if config.REST_API_ENABLED:
-    import apps.api
+    import workplace.api

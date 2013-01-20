@@ -1,4 +1,4 @@
-from apps import app
+from workplace import app
 
 from flask import (Flask, request, session, g, redirect, url_for, abort,
     render_template, flash, _app_ctx_stack)
@@ -7,18 +7,32 @@ from flask.ext.login import (LoginManager, current_user, login_required,
     login_user, logout_user, UserMixin, AnonymousUser,
     confirm_login, fresh_login_required)
 
-from apps.models import User
-from apps import db
+from workplace.models import User
+from workplace import db
 
-from apps.forms import RegisterForm, LoginForm, ResetPasswordForm
+from workplace.forms import RegisterForm, LoginForm, ResetPasswordForm
 
 from datetime import datetime
 
-
+#workplace applications
 @app.route('/')
-def index():
-    return render_template("home.html", title="Home Page")
+@app.route('/workplace')
+def workplace():
+    return render_template("workplace.html", title="Personal apps made for the connected world.")
 
+@app.route('/archive')
+def archive():
+    return render_template("archive.html", title="Archive")
+
+@app.route('/news')
+def news():
+    return render_template("news.html", title="News")
+
+@app.route('/todo')
+def todo():
+    return render_template("todo.html", title="To-Do List")
+
+#workplace pages
 @app.route("/register", methods=("GET", "POST"))
 def register():
     form = RegisterForm()

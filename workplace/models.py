@@ -1,4 +1,4 @@
-from apps import db
+from workplace import db
 from datetime import datetime
 
 from flask.ext.login import AnonymousUser, UserMixin
@@ -88,7 +88,7 @@ class UserApp(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref=db.backref('app_users', lazy='dynamic'))
     app_id = db.Column(db.Integer, db.ForeignKey('app.id'))
-    app = db.relationship('App', backref=db.backref('apps', lazy='dynamic'))
+    app = db.relationship('App', backref=db.backref('workplace', lazy='dynamic'))
     
     def __init__(self, status, user, app):
         self.status = status

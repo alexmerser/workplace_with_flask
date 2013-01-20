@@ -1,5 +1,5 @@
-from apps import db, site_admin
-from apps.models import App, User, UserApp, UserEmail
+from workplace import db, site_admin
+from workplace.models import App, User, UserApp, UserEmail
 from flask.ext.admin.contrib.sqlamodel import ModelView
 
 site_admin.add_view(ModelView(App, db.session))

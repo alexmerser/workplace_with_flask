@@ -20,23 +20,27 @@
 		<header id="page_header" class="clearfix"> 
 			<div id="page_header_apps">
 				<ul> 
-					<li><a href="{{ url_for('index') }}">Workplace</a></li>
-					<li><a href="{{ url_for('index') }}">Archive</a></li>
-					<li><a href="{{ url_for('index') }}">News</a></li>
-					<li><a href="{{ url_for('index') }}">To-Dos</a></li>
+					{% block page_header_apps %}
+						<li><a href="{{ url_for('apps') }}">Workplace</a></li>
+						<li><a href="{{ url_for('archive') }}">Archive</a></li>
+						<li><a href="{{ url_for('news') }}">News</a></li>
+						<li><a href="{{ url_for('todo') }}">To-Do List</a></li>
+					{% endblock %}
 				</ul>
 			</div> 
 			<div id="page_header_content">	 
                 {% if current_user.is_authenticated() %} 
 					<div id="user_header_buttons" class="header_buttons fr">
 						<ul>
-							<li><a href="{{ url_for('messages') }}">Messages</a></li>
-							<li><a href="{{ url_for('notifications') }}">Notifications</a></li>
-							<li><a href="{{ url_for('profile') }}">Profile</a></li>
-							<li><a href="{{ url_for('settings') }}">Settings</a></li>
-	                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
-	                    </ul>
-	                </div>
+							{% block page_header_content%}
+								<li><a href="{{ url_for('messages') }}">Messages</a></li>
+								<li><a href="{{ url_for('notifications') }}">Notifications</a></li>
+								<li><a href="{{ url_for('profile') }}">Profile</a></li>
+								<li><a href="{{ url_for('settings') }}">Settings</a></li>
+		                        <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+		                    {% endblock %}
+						</ul>
+					</div>
                 {% else %} 
 					<div id="page_header_register" class="fr">
 						<form method="post" action="{{ url_for('hlogin') }}">
@@ -55,10 +59,6 @@
 			</div>  
 		</header> 
 		<!-- header end -->
-
-		{% for message in get_flashed_messages() %}
-			<div class="flash">{{ message }}</div>
-		{% endfor %}
 
 		<!-- body -->
 		{% block body %}
