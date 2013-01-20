@@ -5,7 +5,8 @@ from flask.ext.login import (LoginManager, current_user, login_required,
     login_user, logout_user, UserMixin, AnonymousUser,
     confirm_login, fresh_login_required)
 from workplace import app
-from workplace.forms import RegisterForm, LoginForm, ResetPasswordForm, ChangeUsernameForm
+from workplace.forms import (AccountGeneralForm, AccountEmailsForm, AccountListsForm, 
+    AccountPasswordForm, AccountProfileForm, LoginForm, RegisterForm, ResetPasswordForm)
 from workplace.models import db, User
 
 
@@ -127,7 +128,7 @@ def notifications():
 @app.route("/a/general")
 @login_required
 def a_general():
-    form = ChangeUsernameForm()
+    form = AccountGeneralForm()
     return render_template("a_general.html", form=form, title="Account - General")
 
 @app.route("/a/applications")
@@ -135,24 +136,48 @@ def a_general():
 def a_applications():
     return render_template("a_applications.html", title="Account - Applications")
 
+#Insert info to UserApp Model
+@app.route("/a/applications/add/<application>")
+@login_required
+def a_applications_add():
+    pass
+
+#Account suspends activity and visibility for the application
+#Update UserApp Model status
+@app.route("/a/applications/suspend/<application>")
+@login_required
+def a_applications_suspend():
+    pass
+
+#Account suspends activity and visibility for the application AND removes all content
+#Update UserApp Model status
+@app.route("/a/applications/remove/<application>")
+@login_required
+def a_applications_remove():
+    pass
+
 @app.route("/a/emails")
 @login_required
 def a_emails():
-    return render_template("a_emails.html", title="Account - Emails")
+    form = AccountEmailsForm()
+    return render_template("a_emails.html", form=form, title="Account - Emails")
 
 @app.route("/a/lists")
 @login_required
 def a_lists():
-    return render_template("a_lists.html", title="Account - Password")
+    form = AccountListsForm()
+    return render_template("a_lists.html", form=form, title="Account - Password")
 
 @app.route("/a/password")
 @login_required
 def a_password():
-    return render_template("a_password.html", title="Account - Password")
+    form = AccountPasswordForm()
+    return render_template("a_password.html", form=form, title="Account - Password")
 
 @app.route("/a/profile")
 @login_required
 def a_profile():
-    return render_template("a_profile.html", title="Account - Profile")
+    form = AccountProfileForm()
+    return render_template("a_profile.html", form=form, title="Account - Profile")
 
 
