@@ -1,7 +1,7 @@
+import config
 from flask import Flask
 from flask_debugtoolbar import DebugToolbarExtension
 from flask.ext.sqlalchemy import SQLAlchemy
-import config
 
 app = Flask(__name__)
 app.config.from_object(config)

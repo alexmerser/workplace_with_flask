@@ -1,18 +1,13 @@
-from workplace import app
-
+from datetime import datetime
 from flask import (Flask, request, session, g, redirect, url_for, abort,
     render_template, flash, _app_ctx_stack)
-
 from flask.ext.login import (LoginManager, current_user, login_required,
     login_user, logout_user, UserMixin, AnonymousUser,
     confirm_login, fresh_login_required)
-
-from workplace.models import User
-from workplace import db
-
+from workplace import app
 from workplace.forms import RegisterForm, LoginForm, ResetPasswordForm
+from workplace.models import db, User
 
-from datetime import datetime
 
 #workplace applications
 @app.route('/')
@@ -127,8 +122,6 @@ def settings():
 @login_required
 def messages():
     return render_template("messages.html", title="Messages")
-
-
 
 @app.route("/notifications", methods=("GET", ))
 @login_required

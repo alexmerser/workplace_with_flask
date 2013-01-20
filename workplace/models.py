@@ -1,7 +1,6 @@
-from workplace import db
 from datetime import datetime
-
 from flask.ext.login import AnonymousUser, UserMixin
+from workplace import db
 
 class Anonymous(AnonymousUser):
     name = u"Anonymous"

@@ -1,8 +1,8 @@
-from flask.ext.testing import TestCase
 from config import ROOT
+from flask.ext.testing import TestCase
 import os
-from apps import db, app
 import unittest
+from workplace import db, app
 
 class WorkplaceTest(TestCase):
 
@@ -28,7 +28,7 @@ class WorkplaceTest(TestCase):
 
     # Testing Models
     def test_user_model(self):
-        from apps.models import User
+        from workplace.models import User
         # before creating, should have 0 user
         user_count = 0
         users = User.query.all()

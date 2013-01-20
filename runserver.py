@@ -1,7 +1,6 @@
-from flask import Flask
-from workplace import app
-from workplace import db
 import config
+from flask import Flask
+from workplace import app, db
 
 app.debug = config.DEBUG
 if __name__ == "__main__":
