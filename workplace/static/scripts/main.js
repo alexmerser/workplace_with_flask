@@ -1,5 +1,41 @@
+function daysInMonth(month,year) {
+   return new Date(year, month, 0).getDate();
+}
+
+
 jQuery(document).ready(function ($) {
 	
+
+	// Birthday Logic
+ 	var $birthday_month = $('#birthday_month');  
+ 	var $birthday_day = $('#birthday_day');
+ 	var $birthday_year = $('#birthday_year');
+
+ 	// Fill birth years from js to have a dynamic list
+	var bday_years = ['<option value="-1">Year: </option>'];
+	var current_year = new Date().getFullYear();
+	for(var i = current_year; i >= 1905; i--) {
+		bday_years.push('<option value="' + i + '">' + i + '</option>');
+	}  
+ 	$birthday_year.html(bday_years.join(''));
+
+ 	// Do not allow to add something like 30th of feb, thus update no of days accordingly.
+ 	$birthday_year.add($birthday_month).change(function () {
+ 		var selected_year = $birthday_year.val();
+ 		var selected_month = $birthday_month.val()
+ 		if( selected_year != -1 && selected_month != -1 ) {
+ 			var bday_days = ['<option value="-1">Day:</option>'];
+ 			var days_in_month = daysInMonth(selected_month,selected_year);
+ 			for(var i = 1; i <= days_in_month; i++ ) {
+ 				bday_days.push('<option value="' + i + '">' + i + '</option>');
+ 			} 
+ 			var selected_day = $birthday_day.val(); 
+ 			$birthday_day.html(bday_days.join('')).val(selected_day);
+ 		}
+ 	}); 
+
+
+
 	//$('select').dropkick(); 
 
 	$('#add_news').focus(function () {
@@ -133,4 +169,30 @@ jQuery(document).ready(function ($) {
 	});
 	
 
+	// a/list page
+
+	var lists = $('#lists').on('click', 'li',function () {
+		$('#list_members_wrapper').fadeIn('slow');
+	});
+
+	$('#create_list').click(function () {
+		var list = $('#list_name') 
+		lists.append('<li><a href="#">' + list.prop('value') + ' (0)</a></li>');
+		list.prop('value','');
+		// Request to server
+		// var params = {};
+		// $.post('', params, function () {
+		// 	// If response is not okay, give 'try again' or disable like facebook
+		// 	lists.find('li:last').addClass('disable');
+		// });
+
+		return false;
+	});
+
+	$('#add_friend_to_list').click(function () {
+		var friend = $('#friend_to_add_to_list');
+		$('#list_members').append('<li><a href="#">' + friend.prop('value')  + '</a></li>');
+		friend.prop('value','');
+		return false;
+	});
 });

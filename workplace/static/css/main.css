@@ -649,3 +649,18 @@ ul[data-toggle] {
 	color:#999;
 	font-style: italic;
 }
+
+#lists_wrapper {
+	width: 300px;
+}
+
+#list_members_wrapper {
+	margin-top: 75px;
+	display: none;
+}
+
+#list_members {
+	height: 300px;
+	overflow-y: auto;
+	margin-top: 20px;
+}

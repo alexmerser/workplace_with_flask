@@ -6,53 +6,48 @@
 	{% include "account_nav.html" %}
 
 	<div id="account_content" class="column">
-		<form style="float:left" id="account_form" method="post" action="{{ url_for('a_profile') }}">
-			{{ form.hidden_tag() }}
-			<fieldset>
-				<legend>Account/Lists</legend>
-				<div id="error_block" class="message_block error_block">??</div>   
-					<ul> 
-						<li>
-							<input class="textbox full_textbox" name="list_name" placeholder="Create a new list"/>
-							<input class="submit_button" type="submit" value="Create" />
-						</li>
-						<li>
-							Friends (235)
-						</li>
-						<li>
-							Family (215)
-						</li>
-						<li>
-							Dance Club (123)
-						</li>
-						<li>
-							Programmers (51)
-						</li>
-						<li>
-							Colleagues (50)
-						</li>
-						<li>
-							Americans (5)
-						</li>
-					</ul> 
-			</fieldset>
-		</form>
-		<div style="float:left" id="list_members">
+		<div id="lists_wrapper" class="fl">
+			<form method="post" action="{{ url_for('a_profile') }}">
+				{{ form.hidden_tag() }}
+				<fieldset>
+					<legend>Account/Lists</legend>
+					<div id="error_block" class="message_block error_block">??</div>   
+					<input class="textbox" id="list_name" name="list_name" placeholder="Create a new list"/>
+					<input class="submit_button" id="create_list" type="submit" value="Create" /> 
+				</fieldset>
+			</form>
+			<ul id="lists"> 
+				<li>
+					<a href="#">Friends (235)</a>
+				</li>
+				<li>
+					<a href="#">Family (215)</a>
+				</li>
+				<li>
+					<a href="#">Dance Club (123)</a>
+				</li>
+				<li>
+					<a href="#">Programmers (51)</a>
+				</li>
+				<li>
+					<a href="#">Colleagues (50)</a>
+				</li>
+				<li>
+					<a href="#">Americans (5)</a>
+				</li>
+			</ul>
+		</div>
+		<div id="list_members_wrapper" class="fl">
 			<form>
 				<!-- Input shall pull names from JSON to auto suggest -->
-				<input class="textbox full_textbox" name="user_name" placeholder="Add to 'Friends'"/>
-				<input class="submit_button" type="submit" value="Add" />
-			</form>
-			</form>
-			<li>
-				Dogukan Tufekci <a href="">Remove</a>
-			</li>
-			<li>
-				Jashwant Chaudhary <a href="">Remove</a>
-			</li>
-			<li>
-				Zhu Tao
-			</li>
+				<input class="textbox" name="user_name" id="friend_to_add_to_list" placeholder="Add to 'Friends'"/>
+				<input class="submit_button" type="submit"  id="add_friend_to_list" value="Add" />
+			</form> 
+			<ul id="list_members">
+				<li><a href="#">Jazz</a></li>
+				<li><a href="#">Dogu</a></li>
+				<li><a href="#">Jash</a></li>
+			</ul>
 		</div>
 	</div>
 
